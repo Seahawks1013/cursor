@@ -73,8 +73,6 @@
       margin: 0 auto;
       display: block;
       line-height: 0;
-      aspect-ratio: 900 / 663;
-      min-height: 260px;
     }
 
     #primo-beef-chart-root .cow-svg {
@@ -88,6 +86,12 @@
     }
 
     #primo-beef-chart-root .cow-base {
+      fill: #000;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+
+    #primo-beef-chart-root .cow-silhouette {
       fill: #000;
       stroke: #fff;
       stroke-width: 2;
@@ -290,27 +294,9 @@
 
       <div class="primo-cow-panel">
         <div class="cow-image-wrap">
-          <svg class="cow-svg" width="900" height="663" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;max-width:900px!important;height:auto!important;">
-            <g class="cow-base">
-              <polygon points="15,155 82,155 82,195 15,195" />
-              <polygon points="72,110 170,108 172,148 158,155 100,155 73,148" />
-              <polygon points="176,85 242,63 248,120 240,258 180,262" />
-              <polygon points="242,63 408,60 408,260 403,355 245,355" />
-              <polygon points="408,60 538,60 540,355 408,355" />
-              <polygon points="538,60 637,60 640,250 538,250" />
-              <polygon points="637,60 720,72 722,140 640,140" />
-              <polygon points="640,143 725,150 727,180 640,180" />
-              <polygon points="640,183 727,188 728,218 640,218" />
-              <polygon points="640,221 728,222 723,285 640,285" />
-              <polygon points="725,75 848,90 855,220 848,390 805,420 735,395 728,220" />
-              <polygon points="815,65 870,68 872,128 820,132 808,95" />
-              <polygon points="245,358 403,358 403,450 385,458 255,458 245,450" />
-              <polygon points="408,358 538,358 540,455 408,455" />
-              <polygon points="540,358 640,358 640,455 540,455" />
-              <polygon points="258,460 315,460 315,620 258,620" />
-              <polygon points="325,460 382,460 382,620 325,620" />
-              <polygon points="670,455 740,455 740,625 670,625" />
-              <polygon points="790,455 860,455 860,625 790,625" />
+          <svg class="cow-svg" width="900" height="663" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:auto!important;">
+            <g class="cow-base" aria-hidden="true">
+              <path class="cow-silhouette" d="M24 176 L72 166 L84 136 L108 109 L160 95 L186 85 L230 66 L308 58 L420 58 L535 60 L640 62 L722 74 L810 88 L852 102 L868 128 L862 214 L852 390 L862 444 L852 532 L832 552 L804 548 L790 455 L740 455 L740 625 L668 625 L670 455 L620 455 L610 520 L572 530 L548 524 L538 492 L520 455 L402 455 L382 455 L382 620 L324 620 L324 455 L314 455 L314 620 L258 620 L258 455 L245 455 L240 355 L180 262 L170 210 L132 185 L88 180 L24 195 Z" />
             </g>
 
             <g aria-hidden="true">
