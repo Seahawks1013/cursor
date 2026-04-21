@@ -85,6 +85,7 @@
     .cow-svg {
       width: 100%;
       height: auto;
+      min-height: 420px;
       display: block;
       background: #fff;
     }
@@ -104,20 +105,22 @@
     }
 
     .cow-region {
-      fill: #0d0d0d;
-      stroke: #fff;
-      stroke-width: 2;
+      fill: rgba(0, 0, 0, 0) !important;
+      stroke: #fff !important;
+      stroke-width: 2 !important;
+      vector-effect: non-scaling-stroke;
+      pointer-events: all;
       cursor: pointer;
       transition: fill 0.25s ease, stroke 0.25s ease;
     }
 
     .cow-region:hover {
-      fill: #2d3d38;
+      fill: rgba(63, 89, 81, 0.42);
       stroke: #fff;
     }
 
     .cow-region.active {
-      fill: #3f5951;
+      fill: rgba(63, 89, 81, 0.58);
       stroke: #fff;
     }
 
@@ -159,7 +162,12 @@
     .pi-text-block {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
+    }
+
+    .pi-guide-grid {
+      display: grid;
+      gap: 14px;
     }
 
     .pi-section-main {
@@ -188,14 +196,20 @@
     }
 
     .pi-cut-title {
-      margin: 10px 0 2px;
+      margin: 0 0 4px;
       font-family: Georgia, serif;
       font-size: 17px;
       font-weight: 700;
       color: #111;
       border-left: 3px solid #3f5951;
-      background: #f7f7f7;
+      background: #f4f7f6;
       padding: 7px 10px;
+    }
+
+    .pi-cut-card {
+      border: 1px solid #d7e0dd;
+      background: #fff;
+      padding: 10px;
     }
 
     .pi-info-label {
@@ -241,6 +255,14 @@
       border-left-color: #8da39b;
       background: #f2f6f5;
     }
+
+    .pi-sub-list {
+      margin: 4px 0 0 22px;
+      padding: 0;
+      color: #2a2a2a;
+      font-size: 13px;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -266,7 +288,7 @@
 
       <div class="primo-cow-panel">
         <div class="cow-image-wrap">
-          <svg class="cow-svg" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <svg class="cow-svg" width="900" height="663" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
             <g class="cow-base">
               <polygon points="15,155 82,155 82,195 15,195" />
               <polygon points="72,110 170,108 172,148 158,155 100,155 73,148" />
@@ -942,11 +964,22 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
       function buildFormattedBody(body) {
         var block = document.createElement("div");
         block.className = "pi-text-block";
+        var guideGrid = document.createElement("div");
+        guideGrid.className = "pi-guide-grid";
+        var currentCard = null;
         var lines = body.split("\n").map(function(line) {
           return line.trim();
         }).filter(function(line) {
           return line.length > 0;
         });
+
+        function appendNode(node) {
+          if (currentCard) {
+            currentCard.appendChild(node);
+          } else {
+            block.appendChild(node);
+          }
+        }
 
         for (var i = 0; i < lines.length; i++) {
           var line = lines[i];
@@ -956,7 +989,7 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
             var sectionMain = document.createElement("p");
             sectionMain.className = "pi-section-main";
             sectionMain.textContent = line;
-            block.appendChild(sectionMain);
+            appendNode(sectionMain);
             continue;
           }
 
@@ -964,15 +997,18 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
             var pill = document.createElement("p");
             pill.className = "pi-section-pill";
             pill.textContent = line;
-            block.appendChild(pill);
+            appendNode(pill);
             continue;
           }
 
           if (/^[A-Z][A-Za-z0-9'&()\/.\- ]+$/.test(line) && next.indexOf("Quick Facts:") === 0) {
+            currentCard = document.createElement("section");
+            currentCard.className = "pi-cut-card";
+            block.appendChild(currentCard);
             var cutTitle = document.createElement("h4");
             cutTitle.className = "pi-cut-title";
             cutTitle.textContent = line;
-            block.appendChild(cutTitle);
+            currentCard.appendChild(cutTitle);
             continue;
           }
 
@@ -980,17 +1016,17 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
             var infoLabel = document.createElement("p");
             infoLabel.className = "pi-info-label";
             infoLabel.textContent = line;
-            block.appendChild(infoLabel);
+            appendNode(infoLabel);
             continue;
           }
 
           if (/^(Quick Facts:|Tips for Success:|Doneness|Preparation:|Heating:|Cooking:|For slicing:|For braising\/stewing:|Heart:|Liver:|Kidneys:|Well-Done)/.test(line)) {
-            appendLabelLine(block, "pi-detail-line", line);
+            appendLabelLine(currentCard || block, "pi-detail-line", line);
             continue;
           }
 
           if (/^(Rare:|Medium-Rare:|Medium:)/.test(line)) {
-            appendLabelLine(block, "pi-temp-line", line);
+            appendLabelLine(currentCard || block, "pi-temp-line", line);
             continue;
           }
 
@@ -998,14 +1034,24 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
             var methodTitle = document.createElement("p");
             methodTitle.className = "pi-method-title";
             methodTitle.textContent = line;
-            block.appendChild(methodTitle);
+            appendNode(methodTitle);
+            continue;
+          }
+
+          if (/^(Cooked through, typically medium|The marrow is a delicacy|For clear broth|Use cold water to start|For roasted sirloin tip|For stews, ensure|For even cooking)/.test(line)) {
+            var liWrap = document.createElement("ul");
+            liWrap.className = "pi-sub-list";
+            var li = document.createElement("li");
+            li.textContent = line;
+            liWrap.appendChild(li);
+            appendNode(liWrap);
             continue;
           }
 
           var bodyLine = document.createElement("p");
           bodyLine.className = "pi-body-line";
           bodyLine.textContent = line;
-          block.appendChild(bodyLine);
+          appendNode(bodyLine);
         }
 
         return block;
