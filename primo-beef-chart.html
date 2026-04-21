@@ -1,10 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Primo Beef Chart - Customer Education Guide</title>
-  <style>
+<!-- Primo Beef Chart: Shopify single-block snippet -->
+<style>
     @keyframes primoFadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -15,9 +10,9 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    * { box-sizing: border-box; }
+    #primo-beef-chart-root, #primo-beef-chart-root * { box-sizing: border-box; }
 
-    body {
+    #primo-beef-chart-root {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       color: #000;
@@ -26,10 +21,10 @@
       font-size: 16px;
     }
 
-    .primo-reveal { opacity: 0; }
-    .primo-reveal.visible { animation: primoFadeUp 0.8s ease-out forwards; }
+    #primo-beef-chart-root .primo-reveal { opacity: 0; }
+    #primo-beef-chart-root .primo-reveal.visible { animation: primoFadeUp 0.8s ease-out forwards; }
 
-    .primo-interactive-wrap {
+    #primo-beef-chart-root .primo-interactive-wrap {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
@@ -38,13 +33,13 @@
     }
 
     @media (min-width: 900px) {
-      .primo-interactive-wrap {
+      #primo-beef-chart-root .primo-interactive-wrap {
         grid-template-columns: 420px 1fr;
         gap: 32px;
         align-items: start;
       }
 
-      .primo-info-panel {
+      #primo-beef-chart-root .primo-info-panel {
         position: sticky;
         top: 20px;
         max-height: calc(100vh - 40px);
@@ -52,7 +47,7 @@
       }
     }
 
-    .primo-info-panel {
+    #primo-beef-chart-root .primo-info-panel {
       background: #fff;
       color: #000;
       padding: clamp(20px, 4vw, 28px);
@@ -60,11 +55,11 @@
       border: 2px solid #000;
     }
 
-    .primo-info-panel::-webkit-scrollbar { width: 6px; }
-    .primo-info-panel::-webkit-scrollbar-track { background: #f0f0f0; }
-    .primo-info-panel::-webkit-scrollbar-thumb { background: #3f5951; }
+    #primo-beef-chart-root .primo-info-panel::-webkit-scrollbar { width: 6px; }
+    #primo-beef-chart-root .primo-info-panel::-webkit-scrollbar-track { background: #f0f0f0; }
+    #primo-beef-chart-root .primo-info-panel::-webkit-scrollbar-thumb { background: #3f5951; }
 
-    .primo-cow-panel {
+    #primo-beef-chart-root .primo-cow-panel {
       background: #fff;
       padding: clamp(12px, 2vw, 20px);
       border: 2px solid #000;
@@ -73,7 +68,7 @@
       justify-content: center;
     }
 
-    .cow-image-wrap {
+    #primo-beef-chart-root .cow-image-wrap {
       position: relative;
       width: 100%;
       max-width: 900px;
@@ -82,7 +77,7 @@
       line-height: 0;
     }
 
-    .cow-svg {
+    #primo-beef-chart-root .cow-svg {
       width: 100%;
       height: auto;
       min-height: 420px;
@@ -90,13 +85,13 @@
       background: #fff;
     }
 
-    .cow-base {
+    #primo-beef-chart-root .cow-base {
       fill: #000;
       stroke: #fff;
       stroke-width: 2;
     }
 
-    .cow-label {
+    #primo-beef-chart-root .cow-label {
       fill: #fff;
       font-family: "Arial Narrow", Arial, sans-serif;
       letter-spacing: 0.04em;
@@ -104,7 +99,7 @@
       pointer-events: none;
     }
 
-    .cow-region {
+    #primo-beef-chart-root .cow-region {
       fill: rgba(0, 0, 0, 0) !important;
       stroke: #fff !important;
       stroke-width: 2 !important;
@@ -114,19 +109,19 @@
       transition: fill 0.25s ease, stroke 0.25s ease;
     }
 
-    .cow-region:hover {
+    #primo-beef-chart-root .cow-region:hover {
       fill: rgba(63, 89, 81, 0.42);
       stroke: #fff;
     }
 
-    .cow-region.active {
+    #primo-beef-chart-root .cow-region.active {
       fill: rgba(63, 89, 81, 0.58);
       stroke: #fff;
     }
 
-    .primo-info-content { animation: primoSlideInLeft 0.4s ease-out; }
+    #primo-beef-chart-root .primo-info-content { animation: primoSlideInLeft 0.4s ease-out; }
 
-    .pi-eyebrow {
+    #primo-beef-chart-root .pi-eyebrow {
       font-family: Arial, sans-serif;
       font-size: 11px;
       letter-spacing: 0.25em;
@@ -136,7 +131,7 @@
       margin-bottom: 10px;
     }
 
-    .pi-title {
+    #primo-beef-chart-root .pi-title {
       font-family: Georgia, serif;
       font-size: clamp(1.45rem, 4vw, 2rem);
       font-weight: 900;
@@ -146,31 +141,31 @@
       color: #000;
     }
 
-    .pi-primal-intro {
+    #primo-beef-chart-root .pi-primal-intro {
       font-size: clamp(13px, 2vw, 14px);
       color: #333;
       margin: 0 0 20px;
       line-height: 1.6;
     }
 
-    .pi-divider {
+    #primo-beef-chart-root .pi-divider {
       border: none;
       border-top: 1px solid #ddd;
       margin: 20px 0;
     }
 
-    .pi-text-block {
+    #primo-beef-chart-root .pi-text-block {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .pi-guide-grid {
+    #primo-beef-chart-root .pi-guide-grid {
       display: grid;
       gap: 14px;
     }
 
-    .pi-section-main {
+    #primo-beef-chart-root .pi-section-main {
       margin: 0;
       font-family: Arial, sans-serif;
       font-size: 11px;
@@ -180,7 +175,7 @@
       font-weight: 700;
     }
 
-    .pi-section-pill {
+    #primo-beef-chart-root .pi-section-pill {
       margin: 2px 0 10px;
       display: inline-block;
       width: fit-content;
@@ -195,7 +190,7 @@
       font-weight: 700;
     }
 
-    .pi-cut-title {
+    #primo-beef-chart-root .pi-cut-title {
       margin: 0 0 4px;
       font-family: Georgia, serif;
       font-size: 17px;
@@ -206,13 +201,13 @@
       padding: 7px 10px;
     }
 
-    .pi-cut-card {
+    #primo-beef-chart-root .pi-cut-card {
       border: 1px solid #d7e0dd;
       background: #fff;
       padding: 10px;
     }
 
-    .pi-info-label {
+    #primo-beef-chart-root .pi-info-label {
       margin: 8px 0 2px;
       font-family: Arial, sans-serif;
       font-size: 11px;
@@ -222,7 +217,7 @@
       font-weight: 700;
     }
 
-    .pi-method-title {
+    #primo-beef-chart-root .pi-method-title {
       margin: 8px 0 0;
       font-family: Georgia, serif;
       font-size: 15px;
@@ -230,9 +225,9 @@
       color: #111;
     }
 
-    .pi-body-line,
-    .pi-detail-line,
-    .pi-temp-line {
+    #primo-beef-chart-root .pi-body-line,
+    #primo-beef-chart-root .pi-detail-line,
+    #primo-beef-chart-root .pi-temp-line {
       margin: 0;
       font-size: 13px;
       line-height: 1.6;
@@ -242,31 +237,36 @@
       border-left: 2px solid #e3e3e3;
     }
 
-    .pi-detail-line {
+    #primo-beef-chart-root .pi-detail-line {
       border-left-color: #3f5951;
     }
 
-    .pi-detail-line strong,
-    .pi-temp-line strong {
+    #primo-beef-chart-root .pi-detail-line strong,
+    #primo-beef-chart-root .pi-temp-line strong {
       color: #111;
     }
 
-    .pi-temp-line {
+    #primo-beef-chart-root .pi-temp-line {
       border-left-color: #8da39b;
       background: #f2f6f5;
     }
 
-    .pi-sub-list {
+    #primo-beef-chart-root .pi-sub-list {
       margin: 4px 0 0 22px;
       padding: 0;
       color: #2a2a2a;
       font-size: 13px;
       line-height: 1.6;
     }
-  </style>
-</head>
-<body>
-  <section style="padding: clamp(50px, 10vw, 100px) clamp(16px, 4vw, 24px) clamp(40px, 8vw, 80px); text-align: center; border-bottom: 2px solid #000;">
+  
+
+  #primo-beef-chart-root .cow-base polygon { fill: #000 !important; stroke: #fff !important; stroke-width: 2 !important; }
+  #primo-beef-chart-root .cow-region { fill: rgba(0,0,0,0) !important; stroke: #fff !important; stroke-width: 2 !important; }
+
+</style>
+
+<div id="primo-beef-chart-root">
+<section style="padding: clamp(50px, 10vw, 100px) clamp(16px, 4vw, 24px) clamp(40px, 8vw, 80px); text-align: center; border-bottom: 2px solid #000;">
     <div class="primo-reveal" style="display: inline-block; font-family: Arial, sans-serif; font-size: clamp(10px, 2vw, 12px); letter-spacing: 0.25em; text-transform: uppercase; color: #3f5951; font-weight: 600; margin-bottom: 20px; padding: 8px 16px; border: 1.5px solid #3f5951; border-radius: 100px;">&#9733; Customer Education Guide &#9733;</div>
     <h1 class="primo-reveal" style="animation-delay: 0.15s; font-family: Georgia, serif; font-size: clamp(2rem, 8vw, 4.5rem); font-weight: 900; font-style: italic; max-width: 900px; margin: 0 auto 20px; line-height: 1.1;">The Primo Beef <span style="color: #3f5951;">Chart.</span></h1>
     <p class="primo-reveal" style="animation-delay: 0.3s; font-family: Georgia, serif; font-size: clamp(1rem, 2.5vw, 1.3rem); font-style: italic; max-width: 720px; margin: 0 auto;">This guide provides quick facts and recommended cooking methods for various beef cuts, helping you choose the perfect cut for your next meal.</p>
@@ -358,8 +358,9 @@
 
     <p class="primo-reveal" style="text-align: center; font-size: clamp(13px, 2vw, 14px); font-style: italic; color: #555; margin: 24px auto 0; max-width: 500px;">Tap any region on the cow to see full details.</p>
   </section>
+</div>
 
-  <script>
+<script>
     (function() {
       var chuckText = `CHUCK
 The chuck primal is located at the shoulder of the steer. It's a hardworking muscle group, meaning cuts from this area are typically very flavorful but can be tougher. They often benefit from slow, moist cooking or specific butchery techniques to enhance tenderness.
@@ -938,10 +939,12 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
         }
       };
 
-      var regions = document.querySelectorAll(".cow-region");
-      var infoDefault = document.getElementById("primo-info-default");
-      var infoDisplay = document.getElementById("primo-info-display");
-      var infoPanel = document.getElementById("primo-info-panel");
+      var root = document.getElementById("primo-beef-chart-root");
+      if (!root) return;
+      var regions = root.querySelectorAll(".cow-region");
+      var infoDefault = root.querySelector("#primo-info-default");
+      var infoDisplay = root.querySelector("#primo-info-display");
+      var infoPanel = root.querySelector("#primo-info-panel");
 
       function appendLabelLine(parent, className, line) {
         var p = document.createElement("p");
@@ -1100,11 +1103,11 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
         region.addEventListener("click", function() {
           var cutKey = this.getAttribute("data-cut");
 
-          document.querySelectorAll(".cow-region.active").forEach(function(el) {
+          root.querySelectorAll(".cow-region.active").forEach(function(el) {
             el.classList.remove("active");
           });
 
-          document.querySelectorAll('.cow-region[data-cut="' + cutKey + '"]').forEach(function(el) {
+          root.querySelectorAll('.cow-region[data-cut="' + cutKey + '"]').forEach(function(el) {
             el.classList.add("active");
           });
 
@@ -1126,15 +1129,14 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
           });
         }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
 
-        document.querySelectorAll(".primo-reveal").forEach(function(el) {
+        root.querySelectorAll(".primo-reveal").forEach(function(el) {
           observer.observe(el);
         });
       } else {
-        document.querySelectorAll(".primo-reveal").forEach(function(el) {
+        root.querySelectorAll(".primo-reveal").forEach(function(el) {
           el.classList.add("visible");
         });
       }
     })();
-  </script>
-</body>
-</html>
+  
+</script>
