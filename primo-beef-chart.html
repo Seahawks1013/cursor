@@ -63,26 +63,27 @@
       background: #fff;
       padding: clamp(12px, 2vw, 20px);
       border: 2px solid #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block !important;
+      text-align: center;
     }
 
     #primo-beef-chart-root .cow-image-wrap {
       position: relative;
-      width: 100%;
-      max-width: 900px;
+      width: min(100%, 900px);
       margin: 0 auto;
       display: block;
       line-height: 0;
       aspect-ratio: 900 / 663;
+      min-height: 260px;
     }
 
     #primo-beef-chart-root .cow-svg {
       width: 100%;
       height: auto;
       max-width: 100%;
-      display: block;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       background: #fff;
     }
 
@@ -289,7 +290,7 @@
 
       <div class="primo-cow-panel">
         <div class="cow-image-wrap">
-          <svg class="cow-svg" width="900" height="663" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <svg class="cow-svg" width="900" height="663" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;max-width:900px!important;height:auto!important;">
             <g class="cow-base">
               <polygon points="15,155 82,155 82,195 15,195" />
               <polygon points="72,110 170,108 172,148 158,155 100,155 73,148" />
