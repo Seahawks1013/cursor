@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Primo Beef Chart - Customer Education Guide</title>
+  <style>
+    @keyframes primoFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes primoSlideInLeft {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #000;
+      background: #fff;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .primo-reveal { opacity: 0; }
+    .primo-reveal.visible { animation: primoFadeUp 0.8s ease-out forwards; }
+
+    .primo-interactive-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 900px) {
+      .primo-interactive-wrap {
+        grid-template-columns: 420px 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+
+      .primo-info-panel {
+        position: sticky;
+        top: 20px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+      }
+    }
+
+    .primo-info-panel {
+      background: #fff;
+      color: #000;
+      padding: clamp(20px, 4vw, 28px);
+      min-height: 420px;
+      border: 2px solid #000;
+    }
+
+    .primo-info-panel::-webkit-scrollbar { width: 6px; }
+    .primo-info-panel::-webkit-scrollbar-track { background: #f0f0f0; }
+    .primo-info-panel::-webkit-scrollbar-thumb { background: #3f5951; }
+
+    .primo-cow-panel {
+      background: #fff;
+      padding: clamp(12px, 2vw, 20px);
+      border: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cow-image-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      display: block;
+      line-height: 0;
+    }
+
+    .cow-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #fff;
+    }
+
+    .cow-base {
+      fill: #f6f6f6;
+      stroke: #222;
+      stroke-width: 1.25;
+    }
+
+    .cow-region {
+      fill: rgba(63, 89, 81, 0);
+      stroke: rgba(63, 89, 81, 0);
+      stroke-width: 2;
+      cursor: pointer;
+      transition: fill 0.25s ease, stroke 0.25s ease;
+    }
+
+    .cow-region:hover {
+      fill: rgba(63, 89, 81, 0.35);
+      stroke: rgba(63, 89, 81, 0.9);
+    }
+
+    .cow-region.active {
+      fill: rgba(63, 89, 81, 0.45);
+      stroke: rgba(63, 89, 81, 1);
+    }
+
+    .primo-info-content { animation: primoSlideInLeft 0.4s ease-out; }
+
+    .pi-eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #3f5951;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .pi-title {
+      font-family: Georgia, serif;
+      font-size: clamp(1.45rem, 4vw, 2rem);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1.1;
+      margin: 0 0 14px;
+      color: #000;
+    }
+
+    .pi-primal-intro {
+      font-size: clamp(13px, 2vw, 14px);
+      color: #333;
+      margin: 0 0 20px;
+      line-height: 1.6;
+    }
+
+    .pi-divider {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 20px 0;
+    }
+
+    .pi-raw-content {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13px;
+      line-height: 1.62;
+      color: #222;
+      background: #fafafa;
+      border-left: 3px solid #3f5951;
+      padding: 12px 14px;
+    }
+  </style>
+</head>
+<body>
+  <section style="padding: clamp(50px, 10vw, 100px) clamp(16px, 4vw, 24px) clamp(40px, 8vw, 80px); text-align: center; border-bottom: 2px solid #000;">
+    <div class="primo-reveal" style="display: inline-block; font-family: Arial, sans-serif; font-size: clamp(10px, 2vw, 12px); letter-spacing: 0.25em; text-transform: uppercase; color: #3f5951; font-weight: 600; margin-bottom: 20px; padding: 8px 16px; border: 1.5px solid #3f5951; border-radius: 100px;">&#9733; Customer Education Guide &#9733;</div>
+    <h1 class="primo-reveal" style="animation-delay: 0.15s; font-family: Georgia, serif; font-size: clamp(2rem, 8vw, 4.5rem); font-weight: 900; font-style: italic; max-width: 900px; margin: 0 auto 20px; line-height: 1.1;">The Primo Beef <span style="color: #3f5951;">Chart.</span></h1>
+    <p class="primo-reveal" style="animation-delay: 0.3s; font-family: Georgia, serif; font-size: clamp(1rem, 2.5vw, 1.3rem); font-style: italic; max-width: 720px; margin: 0 auto;">This guide provides quick facts and recommended cooking methods for various beef cuts, helping you choose the perfect cut for your next meal.</p>
+  </section>
+
+  <section style="padding: clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px); max-width: 1400px; margin: 0 auto;">
+    <div class="primo-interactive-wrap">
+      <div class="primo-info-panel" id="primo-info-panel">
+        <div id="primo-info-default">
+          <div class="pi-eyebrow">Interactive Guide</div>
+          <h3 class="pi-title">Select a cut to begin.</h3>
+          <p style="font-size: clamp(14px, 2vw, 15px); color: #333; margin: 0 0 20px;">Click any region on the cow to explore full details, quick facts, methods, tips, and doneness temperatures.</p>
+          <hr class="pi-divider">
+          <div class="pi-eyebrow">How It Works</div>
+          <p style="font-size: clamp(13px, 2vw, 14px); color: #333; margin: 0; line-height: 1.6;">The cow is divided into primal regions. Tap a region to load the exact reference guide text for that cut section.</p>
+        </div>
+        <div id="primo-info-display" style="display: none;"></div>
+      </div>
+
+      <div class="primo-cow-panel">
+        <div class="cow-image-wrap">
+          <svg class="cow-svg" viewBox="0 0 900 663" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <g class="cow-base">
+              <polygon points="15,155 82,155 82,195 15,195" />
+              <polygon points="72,110 170,108 172,148 158,155 100,155 73,148" />
+              <polygon points="176,85 242,63 248,120 240,258 180,262" />
+              <polygon points="242,63 408,60 408,260 403,355 245,355" />
+              <polygon points="408,60 538,60 540,355 408,355" />
+              <polygon points="538,60 637,60 640,250 538,250" />
+              <polygon points="637,60 720,72 722,140 640,140" />
+              <polygon points="640,143 725,150 727,180 640,180" />
+              <polygon points="640,183 727,188 728,218 640,218" />
+              <polygon points="640,221 728,222 723,285 640,285" />
+              <polygon points="725,75 848,90 855,220 848,390 805,420 735,395 728,220" />
+              <polygon points="815,65 870,68 872,128 820,132 808,95" />
+              <polygon points="245,358 403,358 403,450 385,458 255,458 245,450" />
+              <polygon points="408,358 538,358 540,455 408,455" />
+              <polygon points="540,358 640,358 640,455 540,455" />
+              <polygon points="258,460 315,460 315,620 258,620" />
+              <polygon points="325,460 382,460 382,620 325,620" />
+              <polygon points="670,455 740,455 740,625 670,625" />
+              <polygon points="790,455 860,455 860,625 790,625" />
+            </g>
+
+            <polygon class="cow-region" data-cut="tongue" points="15,155 82,155 82,195 15,195" />
+            <polygon class="cow-region" data-cut="cheek" points="72,110 170,108 172,148 158,155 100,155 73,148" />
+            <polygon class="cow-region" data-cut="neck" points="176,85 242,63 248,120 240,258 180,262" />
+            <polygon class="cow-region" data-cut="chuck" points="242,63 408,60 408,260 403,355 245,355" />
+            <polygon class="cow-region" data-cut="ribs" points="408,60 538,60 540,355 408,355" />
+            <polygon class="cow-region" data-cut="short-loin" points="538,60 637,60 640,250 538,250" />
+            <polygon class="cow-region" data-cut="sirloin" points="637,60 720,72 722,140 640,140" />
+            <polygon class="cow-region" data-cut="tenderloin" points="640,143 725,150 727,180 640,180" />
+            <polygon class="cow-region" data-cut="sirloin" points="640,183 727,188 728,218 640,218" />
+            <polygon class="cow-region" data-cut="sirloin" points="640,221 728,222 723,285 640,285" />
+            <polygon class="cow-region" data-cut="round" points="725,75 848,90 855,220 848,390 805,420 735,395 728,220" />
+            <polygon class="cow-region" data-cut="ox-tail" points="815,65 870,68 872,128 820,132 808,95" />
+            <polygon class="cow-region" data-cut="brisket" points="245,358 403,358 403,450 385,458 255,458 245,450" />
+            <polygon class="cow-region" data-cut="plate" points="408,358 538,358 540,455 408,455" />
+            <polygon class="cow-region" data-cut="flank" points="540,358 640,358 640,455 540,455" />
+            <polygon class="cow-region" data-cut="shank" points="258,460 315,460 315,620 258,620" />
+            <polygon class="cow-region" data-cut="shank" points="325,460 382,460 382,620 325,620" />
+            <polygon class="cow-region" data-cut="shank" points="670,455 740,455 740,625 670,625" />
+            <polygon class="cow-region" data-cut="shank" points="790,455 860,455 860,625 790,625" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <p class="primo-reveal" style="text-align: center; font-size: clamp(13px, 2vw, 14px); font-style: italic; color: #555; margin: 24px auto 0; max-width: 500px;">Tap any region on the cow to see full details.</p>
+  </section>
+
+  <script>
+    (function() {
+      var chuckText = `CHUCK
+The chuck primal is located at the shoulder of the steer. It's a hardworking muscle group, meaning cuts from this area are typically very flavorful but can be tougher. They often benefit from slow, moist cooking or specific butchery techniques to enhance tenderness.
+Quick Facts & Cooking Methods:
+Chuck Steak
+Quick Facts: A flavorful, versatile steak, often cut from various parts of the chuck. Can be tougher if not cooked correctly. Good marbling.
+Best Ways to Cook:
+Braising/Stewing:
+Preparation: Pat steak dry. Cut into desired stew-sized pieces if not already. Season generously with salt and pepper.
+Heating: Heat a heavy-bottomed pot or Dutch oven over medium-high heat with a little oil.
+Cooking: Brown all sides of the beef, then remove. Add aromatics (onions, garlic) and liquids (broth, wine, tomatoes). Return beef to pot, bring to a simmer, then cover and cook in oven (300-325°F / 150-160°C) or on stovetop/slow cooker.
+Marinating & Grilling/Pan-Searing (for thinner cuts):
+Preparation: Marinate for at least 2 hours, or up to 24 hours. Pat dry before cooking.
+Heating: Preheat grill to high heat (450-500°F / 230-260°C) or cast-iron skillet over medium-high heat until smoking.
+Cooking: Grill or sear 3-5 minutes per side.
+Tips for Success: For tougher cuts, always opt for slow, moist heat. If grilling, marinate well and don't overcook. Slice grilled steak against the grain.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Well-Done (for braising/stewing): Fork-tender (typically 190-205°F / 88-96°C when collagen breaks down).
+Flat Iron Steak
+Quick Facts: Surprisingly tender for a chuck cut, second only to the tenderloin in tenderness. Excellent marbling and rich beefy flavor. Named for its shape after a tough connective tissue is removed.
+Best Ways to Cook:
+Grilling:
+Preparation: Bring steak to room temperature (30-40 mins). Pat dry and season generously with salt and pepper (or rub).
+Heating: Preheat grill to high heat (450-500°F / 230-260°C).
+Cooking: Place directly on hot grates. Grill 3-5 minutes per side for desired doneness.
+Pan-Searing (Cast Iron):
+Preparation: Same as grilling.
+Heating: Heat a heavy cast-iron skillet over medium-high heat until smoking hot. Add a high smoke-point oil (canola, grapeseed).
+Cooking: Sear 3-5 minutes per side. For thicker cuts, finish in a preheated 400°F (200°C) oven for 5-10 minutes.
+Tips for Success: Do NOT overcook; best at medium-rare to medium. Always slice against the grain for tenderness. Allow to rest 5-10 minutes before slicing.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Teres Major (Shoulder Tender)
+Quick Facts: Often called the "poor man's filet mignon." Exceptionally tender with good flavor, similar in texture to tenderloin but more affordable.
+Best Ways to Cook:
+Pan-Searing:
+Preparation: Bring to room temperature. Pat dry and season.
+Heating: Heat a heavy skillet over medium-high heat with oil.
+Cooking: Sear 3-4 minutes per side until a crust forms. Reduce heat or transfer to a 375°F (190°C) oven to finish cooking to desired doneness.
+Grilling:
+Preparation: Same as pan-searing.
+Heating: Preheat grill to high heat.
+Cooking: Grill directly over high heat for 3-5 minutes per side.
+Tips for Success: Cook quickly to medium-rare or medium to maintain tenderness. Rest well before slicing (5-10 minutes).
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Chuck Roast
+Quick Facts: A classic cut for pot roasts. Very flavorful with good marbling, becomes incredibly tender when cooked slowly.
+Best Ways to Cook:
+Pot Roasting (Braising):
+Preparation: Pat roast dry. Season generously with salt and pepper.
+Heating: Heat a large Dutch oven or oven-safe pot over medium-high heat with oil.
+Cooking: Sear roast on all sides until deeply browned. Remove roast, add aromatics (onions, carrots, celery) and sauté. Deglaze with liquid (broth, wine). Return roast to pot, add more liquid to partially submerge, add herbs. Cover tightly and cook in a 300-325°F (150-160°C) oven for 3-4 hours, or until fork-tender.
+Slow Cooker:
+Preparation: Same as above. Sear on stovetop first for best flavor.
+Heating: Set slow cooker to low.
+Cooking: Place seared roast and other ingredients in slow cooker. Cook on low for 6-8 hours or high for 3-4 hours, until fork-tender.
+Tips for Success: Low and slow cooking is essential to break down connective tissue. Don't rush it! Browning first adds significant flavor depth.
+Doneness (Tenderness): Fork-tender; easily shreddable with a fork (typically 190-205°F / 88-96°C).
+Cross Rib Roast
+Quick Facts: A lean, flavorful roast from the chuck. Can be a bit tougher than other roasts if not cooked slowly.
+Best Ways to Cook:
+Pot Roasting (Braising):
+Preparation: Pat dry and season.
+Heating: Heat Dutch oven or heavy pot over medium-high heat.
+Cooking: Sear roast on all sides. Deglaze with liquid, add vegetables/aromatics. Return roast, add liquid to partially submerge. Cover and cook in a 300-325°F (150-160°C) oven for 3-4 hours, or until fork-tender.
+Slow Cooker:
+Preparation: Same as above, sear first.
+Heating: Set slow cooker to low.
+Cooking: Place ingredients in slow cooker. Cook on low for 6-8 hours or high for 3-4 hours, until fork-tender.
+Tips for Success: Ensure ample liquid and sufficient cooking time for tenderness. Browning adds flavor.
+Doneness (Tenderness): Fork-tender; easily shreddable (typically 190-205°F / 88-96°C).
+Short Ribs
+Quick Facts: Highly prized for their rich, beefy flavor and luscious texture when cooked properly. Contains bone and connective tissue that renders into gelatin, creating a melt-in-your-mouth experience.
+Best Ways to Cook:
+Braising:
+Preparation: Pat ribs dry. Season generously.
+Heating: Heat a Dutch oven or heavy pot over medium-high heat with oil.
+Cooking: Sear ribs on all sides until deeply browned. Remove. Sauté aromatics (onions, carrots, celery). Deglaze with liquid (wine, broth). Return ribs, add liquid to nearly cover. Cover tightly and cook in a 325°F (160°C) oven for 2.5-3.5 hours, or until fall-off-the-bone tender.
+Smoking:
+Preparation: Trim excess fat. Apply a beef rub.
+Heating: Prepare smoker for low and slow cooking (225-275°F / 107-135°C).
+Cooking: Smoke until tender, typically 6-8+ hours, wrapping in butcher paper or foil partway through.
+Tips for Success: Patience is key! The longer and slower they cook, the more tender and flavorful they become. Browning before braising builds deep flavor.
+Doneness (Tenderness): Fall-off-the-bone tender (typically 190-205°F / 88-96°C).
+Korean Short Ribs (Flanken Style)
+Quick Facts: Thinly sliced short ribs cut across the bones, perfect for quick cooking. Marinated traditionally in a sweet and savory sauce.
+Best Ways to Cook:
+Grilling:
+Preparation: Marinate ribs for at least 30 minutes, ideally 2-4 hours. Pat off excess marinade before grilling to prevent flare-ups.
+Heating: Preheat grill to high heat.
+Cooking: Grill directly over high heat for 1-2 minutes per side, just until lightly charred and cooked through.
+Pan-Frying:
+Preparation: Same as grilling.
+Heating: Heat a large cast-iron skillet or non-stick pan over medium-high heat with a little oil.
+Cooking: Fry for 1-2 minutes per side until cooked through and slightly caramelized.
+Tips for Success: Marinating is essential for flavor and tenderization. Cook quickly over high heat to avoid toughness. Don't crowd the pan/grill.
+Doneness (Internal Temperature): Cooked through, typically medium (140-145°F / 60-63°C) for optimal texture when thinly sliced, though often cooked to slightly higher for char.`;
+
+      var ribsText = `RIBS
+Located along the back of the steer, the ribs primal is known for producing incredibly flavorful and often tender cuts, thanks to good marbling and less active muscles.
+Quick Facts & Cooking Methods:
+Rib Eye Steaks
+Quick Facts: Highly prized for its rich flavor and excellent marbling, which melts during cooking, keeping it juicy and tender. A boneless cut from the rib primal.
+Best Ways to Cook:
+Grilling:
+Preparation: Bring steak to room temperature. Pat dry. Season generously with salt and pepper (or steak rub).
+Heating: Preheat grill to high heat (450-500°F / 230-260°C).
+Cooking: Grill 4-6 minutes per side for desired doneness, turning once.
+Pan-Searing (Cast Iron):
+Preparation: Same as grilling.
+Heating: Heat a heavy cast-iron skillet over medium-high to high heat until smoking. Add a high smoke-point oil.
+Cooking: Sear 3-5 minutes per side until a deep crust forms. For thicker cuts, transfer to a 400°F (200°C) oven to finish for 5-10 minutes.
+Tips for Success: Best cooked to medium-rare or medium to maximize tenderness and flavor from the melted fat. Allow to rest 5-10 minutes after cooking before slicing.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Prime Rib (Standing Rib Roast)
+Quick Facts: A show-stopping roast, known for its exceptional flavor, tenderness, and impressive presentation. Essentially a large rib eye roast, often with bones attached.
+Best Ways to Cook:
+Roasting:
+Preparation: Bring roast to room temperature (allow 2-4 hours). Pat dry. Season generously with salt, pepper, garlic, and herbs.
+Heating: Preheat oven to 450°F (230°C) for initial sear, then reduce to 325°F (160°C).
+Cooking: Sear roast at high heat for 15-20 minutes, then reduce heat and continue roasting for 12-15 minutes per pound for medium-rare, or until desired internal temperature is reached.
+Reverse Searing:
+Preparation: Same as above.
+Heating: Preheat oven to a low temperature (200-250°F / 93-120°C).
+Cooking: Roast slowly until 10-15°F below desired final temp. Remove, rest, then sear in a ripping hot oven or on the stovetop for a crust.
+Tips for Success: Use a meat thermometer for precise doneness. Always rest for a significant time (20-30 minutes, loosely tented with foil) before carving to allow juices to redistribute.
+Doneness (Internal Temperature - pulled from oven/smoker):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Back Ribs (Beef Ribs)
+Quick Facts: The bones removed from a prime rib or rib-eye section. Less meat than short ribs, but still flavorful, especially when slow-cooked.
+Best Ways to Cook:
+Smoking:
+Preparation: Trim excess membrane from the bone side. Apply a beef rub.
+Heating: Prepare smoker for low and slow cooking (225-275°F / 107-135°C).
+Cooking: Smoke for 5-8 hours, or until meat pulls away easily from the bone. May wrap in foil or butcher paper partway through.
+Braising/Oven Roasting (Low & Slow):
+Preparation: Season ribs. Sear briefly in a hot pan if desired for color.
+Heating: Preheat oven to 275-300°F (135-150°C).
+Cooking: Place ribs in a baking dish, add about 1 inch of liquid (broth, sauce). Cover tightly with foil and cook for 3-4 hours, or until very tender.
+Tips for Success: Cook until the meat is very tender and easily pulls away from the bone. Lower temperatures and longer cooking times are key.
+Doneness (Tenderness): Meat is very tender and pulls easily from the bone (typically 190-205°F / 88-96°C).`;
+
+      var shortLoinText = `SHORT LOIN
+This primal is located behind the ribs and yields some of the most tender and desirable steaks due to minimal muscle use.
+Quick Facts & Cooking Methods:
+New York Steak (Strip Steak / Kansas City Strip)
+Quick Facts: Known for its fine grain, good marbling, and robust beefy flavor. It has a firm texture but is still very tender. Often has a strip of fat on one side (which can be trimmed or rendered).
+Best Ways to Cook:
+Grilling:
+Preparation: Bring steak to room temperature. Pat dry. Season generously with salt and pepper.
+Heating: Preheat grill to high heat (450-500°F / 230-260°C).
+Cooking: Grill 4-6 minutes per side for desired doneness, turning once.
+Pan-Searing (Cast Iron):
+Preparation: Same as grilling.
+Heating: Heat a heavy cast-iron skillet over medium-high to high heat until smoking. Add a high smoke-point oil.
+Cooking: Sear 3-5 minutes per side until a deep crust forms. For thicker cuts, transfer to a 400°F (200°C) oven for 5-10 minutes.
+Tips for Success: Best cooked to medium-rare or medium. Rest for 5-10 minutes after cooking. Render the fat cap by standing the steak on its side in the hot pan/grill if desired.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+T-Bone Steak
+Quick Facts: A "two-for-one" steak, featuring a T-shaped bone separating a New York strip on one side and a smaller piece of tenderloin on the other. Offers two distinct textures and flavors.
+Best Ways to Cook:
+Grilling:
+Preparation: Bring steak to room temperature. Pat dry. Season generously.
+Heating: Preheat grill to high heat. Consider a two-zone fire (direct and indirect heat).
+Cooking: Place tenderloin side further from direct heat. Grill 5-7 minutes per side for desired doneness, turning occasionally.
+Pan-Searing:
+Preparation: Same as grilling.
+Heating: Heat a large, heavy skillet over medium-high heat until smoking.
+Cooking: Sear 3-5 minutes per side. For thicker cuts, transfer to a 400°F (200°C) oven to finish, potentially turning the tenderloin side away from the heat source.
+Tips for Success: Due to different cooking times for the strip and tenderloin, position the tenderloin part further from direct heat or remove earlier if aiming for rare on both. Rest after cooking.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)`;
+
+      var sirloinText = `SIRLOIN
+The sirloin is located near the rear of the steer, between the loin and the round. Cuts from this area are lean, flavorful, and generally more affordable than cuts from the short loin or tenderloin.
+Quick Facts & Cooking Methods:
+Top Sirloin Steak
+Quick Facts: A lean, flavorful, and versatile steak that's generally more affordable than ribeyes or New York strips. Good for various preparations.
+Best Ways to Cook:
+Grilling:
+Preparation: Bring steak to room temperature. Pat dry. Season generously.
+Heating: Preheat grill to high heat (450-500°F / 230-260°C).
+Cooking: Grill 4-6 minutes per side for desired doneness.
+Pan-Searing:
+Preparation: Same as grilling.
+Heating: Heat a heavy skillet over medium-high to high heat with a little oil.
+Cooking: Sear 3-5 minutes per side. For thicker cuts, finish in a 400°F (200°C) oven for 5-10 minutes.
+Tips for Success: Do not overcook; it can become tough if cooked past medium. Rest for 5-10 minutes before slicing.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Sirloin Tip Roast (Knuckle)
+Quick Facts: A lean, economical roast from the sirloin tip. Less tender than a top sirloin steak but very flavorful.
+Best Ways to Cook:
+Roasting (for slicing):
+Preparation: Bring roast to room temperature. Pat dry. Season with salt, pepper, and herbs.
+Heating: Preheat oven to 325-350°F (160-175°C).
+Cooking: Roast for 15-20 minutes per pound, or until desired internal temperature is reached.
+Braising/Stewing:
+Preparation: Cut into cubes if desired. Season.
+Heating: Heat pot over medium-high heat with oil.
+Cooking: Brown meat. Add aromatics and liquid. Cover and simmer gently for 2-3 hours until fork-tender.
+Tips for Success: For roasted sirloin tip, slice very thinly against the grain after resting. For stews, ensure long, slow cooking to tenderize.
+Doneness (Internal Temperature/Tenderness):
+For slicing: 130-145°F (54-63°C), then slice very thinly against the grain.
+For braising/stewing: Fork-tender (typically 190-205°F / 88-96°C).
+Tri Tip Roast
+Quick Facts: A triangular-shaped cut from the bottom sirloin. Known for its rich beefy flavor and good marbling. Popular for grilling and smoking.
+Best Ways to Cook:
+Grilling (Reverse Sear):
+Preparation: Bring roast to room temperature. Pat dry. Season generously.
+Heating: Set up grill for indirect heat (225-275°F / 107-135°C) and a direct high-heat zone.
+Cooking: Cook over indirect heat until 10-15°F below desired final temp. Remove and rest briefly. Then, sear over direct high heat for 2-3 minutes per side for a crust.
+Smoking:
+Preparation: Same as grilling.
+Heating: Prepare smoker for low and slow smoking (225-275°F / 107-135°C).
+Cooking: Smoke until desired internal temperature is reached, then sear for a crust.
+Tips for Success: Has a distinct grain that changes direction (often two directions), so it's critical to slice against the grain for maximum tenderness. Don't overcook; best at medium-rare to medium.
+Doneness (Internal Temperature - pulled from heat):
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Carne Asada
+Quick Facts: While not a specific cut, "Carne Asada" refers to beef prepared in a specific way - typically thin, marinated, and grilled. Flank steak or skirt steak are commonly used, but top sirloin can also be used.
+Best Ways to Cook:
+Grilling:
+Preparation: Marinate for at least 30 minutes, up to 4 hours. Pat off excess marinade before grilling.
+Heating: Preheat grill to high heat.
+Cooking: Grill quickly, 2-4 minutes per side, depending on thickness and desired char.
+Pan-Searing:
+Preparation: Same as grilling.
+Heating: Heat a heavy skillet (cast iron) over high heat until smoking.
+Cooking: Sear quickly, 2-3 minutes per side.
+Tips for Success: Marinating is crucial for flavor and tenderization. Always slice thinly against the grain for tenderness. Cook quickly to prevent toughness.
+Doneness (Internal Temperature): Typically cooked to medium (140-145°F / 60-63°C) for optimal texture when thinly sliced.
+Coulette Steak (Picanha)
+Quick Facts: Often refers to the Picanha cut (from the Top Sirloin Cap, often with a fat cap). Highly flavorful, tender, and popular in Brazilian steakhouses.
+Best Ways to Cook:
+Grilling:
+Preparation: Score the fat cap (do not cut into the meat). Season generously with coarse salt. Can be skewered into a "C" shape.
+Heating: Prepare grill for medium-high to high heat, potentially with a cooler zone.
+Cooking: Place fat-side down first to render the fat, then flip and grill for 4-6 minutes per side for medium-rare, or until desired doneness.
+Roasting:
+Preparation: Score fat cap. Season generously.
+Heating: Preheat oven to 375-400°F (190-200°C).
+Cooking: Roast fat-side up. May sear briefly on stovetop first. Roast until desired internal temperature is reached.
+Tips for Success: The fat cap adds immense flavor; ensure it renders properly. Slice against the grain (which can be tricky due to the curve) for tenderness.
+Doneness (Internal Temperature):
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)`;
+
+      var tenderloinText = `TENDERLOIN
+The most tender cut of beef, located along the spine, a non-weight-bearing muscle. It's lean with a buttery texture and mild flavor.
+Quick Facts & Cooking Methods:
+Filet Mignon
+Quick Facts: The epitome of tenderness, known for its melt-in-your-mouth texture. Very lean with a mild, delicate flavor. Cut from the smaller, pointed end of the tenderloin.
+Best Ways to Cook:
+Pan-Searing:
+Preparation: Bring steak to room temperature. Pat dry. Season generously.
+Heating: Heat a heavy skillet (cast iron) over medium-high heat until smoking. Add a high smoke-point oil.
+Cooking: Sear 2-4 minutes per side until a crust forms. For thicker cuts, transfer to a 400°F (200°C) oven to finish for 5-10 minutes. For extra flavor, add butter, garlic, and herbs to the pan in the last few minutes and baste.
+Grilling:
+Preparation: Same as pan-searing.
+Heating: Preheat grill to high heat.
+Cooking: Grill 3-5 minutes per side, turning once, for desired doneness.
+Tips for Success: Due to its leanness, it benefits from sauces or wrapping in bacon to add moisture and flavor. Best cooked to medium-rare. Don't overcook! Rest for 5-10 minutes.
+Doneness (Internal Temperature):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Tenderloin Strip (Tenderloin Roast)
+Quick Facts: The entire tenderloin muscle, often roasted whole or cut into individual filet mignons. Offers incredible tenderness throughout.
+Best Ways to Cook:
+Roasting:
+Preparation: Bring roast to room temperature. Pat dry. Tie with kitchen twine for even cooking. Season generously.
+Heating: Preheat oven to 400-425°F (200-220°C).
+Cooking: Roast for 20-30 minutes, or until desired internal temperature is reached. (For even cooking, consider reverse searing: roast at 250°F until 10-15°F below target, then sear at high temp.)
+Tips for Success: Very easy to overcook due to leanness; use a meat thermometer. Resting is crucial for retaining juices (15-20 minutes). Slice against the grain.
+Doneness (Internal Temperature - pulled from oven):
+Rare: 120-125°F (49-52°C)
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)`;
+
+      var brisketText = `BRISKET & SHANK
+These primals are from the lower chest and leg areas, respectively. They are hardworking muscles, rich in connective tissue, which means they require low and slow cooking to become tender.
+Quick Facts & Cooking Methods:
+Brisket (Whole or Halves)
+Quick Facts: A quintessential BBQ cut, rich in flavor and connective tissue. Becomes incredibly tender and juicy when cooked low and slow. Consists of two parts: the "point" (fattier) and the "flat" (leaner).
+Best Ways to Cook:
+Smoking:
+Preparation: Trim excess fat (leave about 1/4 inch). Apply a generous layer of beef rub.
+Heating: Prepare smoker to maintain a consistent temperature of 225-275°F (107-135°C).
+Cooking: Smoke for 8-18+ hours, depending on size, until probe tender. May wrap in butcher paper or foil after the bark sets (around 165°F / 74°C internal temp).
+Braising/Oven Roasting:
+Preparation: Season brisket.
+Heating: Preheat oven to 300-325°F (150-160°C).
+Cooking: Sear brisket in a large pot or Dutch oven. Add liquid (broth, wine) to partially submerge. Cover tightly and cook for 3-5 hours (flat) or 4-6 hours (whole), or until fork-tender.
+Tips for Success: Patience is key! Low and slow cooking is non-negotiable. Cook until probe-tender, not just a specific temperature. Rest for at least 1 hour (wrapped) after cooking. Slice against the grain.
+Doneness (Tenderness): Probe-tender; easily yields to a thermometer probe with minimal resistance (typically 195-205°F / 91-96°C).`;
+
+      var shankText = `BRISKET & SHANK
+These primals are from the lower chest and leg areas, respectively. They are hardworking muscles, rich in connective tissue, which means they require low and slow cooking to become tender.
+Quick Facts & Cooking Methods:
+Osso Buco (Beef Shank Cross-Cut)
+Quick Facts: Beef shanks cut crosswise, typically including the marrow bone, which adds incredible flavor and richness to dishes. Rich in collagen, which breaks down into gelatin.
+Best Ways to Cook:
+Braising:
+Preparation: Pat shanks dry. Season and dredge lightly in flour.
+Heating: Heat a large Dutch oven or heavy pot over medium-high heat with olive oil.
+Cooking: Sear shanks on all sides until well browned. Remove. Sauté aromatics (onions, carrots, celery). Deglaze with white wine, then add beef broth and crushed tomatoes. Return shanks. Cover tightly and simmer gently in a 325°F (160°C) oven for 2-3 hours, or until fork-tender.
+Tips for Success: The marrow is a delicacy; scoop it out and enjoy! Ensure a tight-fitting lid for braising to keep moisture in.
+Doneness (Tenderness): Fork-tender; meat falls easily from the bone (typically 190-205°F / 88-96°C).
+Soup Bones (Beef Shank)
+Quick Facts: Sections of beef leg bone with meat attached. High in collagen and flavor, excellent for making rich broths and stocks.
+Best Ways to Cook:
+Stock/Broth:
+Preparation: Rinse bones. For deeper flavor, roast bones in a 400°F (200°C) oven for 30 minutes until browned.
+Heating: Place bones in a large stockpot. Cover with cold water. Bring to a simmer.
+Cooking: Simmer gently for 4-8+ hours, skimming any foam that rises. Add aromatics (onions, carrots, celery, bay leaf) during the last hour or two.
+Tips for Success: For clear broth, simmer gently and skim impurities. Use cold water to start to extract more flavor.
+Doneness (N/A for temperature): Cook until desired flavor and gelatin extraction for broth; meat, if desired for eating, will be very tender.`;
+
+      var flankPlateText = `FLANK & PLATE
+These areas are from the belly section of the steer. Cuts are typically lean and flavorful with a distinct grain, benefiting from marinades and thin slicing.
+Quick Facts & Cooking Methods:
+Skirt Steak
+Quick Facts: Long, flat, and flavorful steak with a coarse grain. Comes in "inside" and "outside" varieties, with outside skirt generally preferred for tenderness. Absorbs marinades exceptionally well.
+Best Ways to Cook:
+Grilling:
+Preparation: Marinate for at least 30 minutes, ideally 2-4 hours. Pat off excess marinade before grilling.
+Heating: Preheat grill to high heat (500°F+ / 260°C+).
+Cooking: Grill quickly, 1-3 minutes per side for medium-rare, depending on thickness and desired char.
+Pan-Searing:
+Preparation: Same as grilling.
+Heating: Heat a heavy cast-iron skillet over high heat until smoking. Add a high smoke-point oil.
+Cooking: Sear quickly, 1-2 minutes per side.
+Tips for Success: Essential to marinate for flavor and tenderness. Always slice very thinly against the grain (the grain is very obvious). Cook quickly to avoid toughness.
+Doneness (Internal Temperature):
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+Flank Steak
+Quick Facts: A lean, flat, and broad steak with a prominent grain. Very flavorful and takes well to marinades.
+Best Ways to Cook:
+Grilling:
+Preparation: Marinate for at least 2 hours, up to 24 hours. Pat dry before grilling.
+Heating: Preheat grill to high heat (450-500°F / 230-260°C).
+Cooking: Grill 4-6 minutes per side for medium-rare, or until desired doneness.
+Pan-Searing:
+Preparation: Same as grilling.
+Heating: Heat a heavy skillet over medium-high to high heat with a little oil.
+Cooking: Sear 3-5 minutes per side.
+Tips for Success: Marinade is highly recommended for flavor and tenderness. Crucial to slice very thinly against the grain to ensure tenderness. Do not overcook! Rest for 5-10 minutes.
+Doneness (Internal Temperature):
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)`;
+
+      var roundText = `ROUND
+The round primal is located at the steer's hind leg. These muscles are very lean and hardworking, making cuts from this area typically tougher. They are best suited for slow, moist cooking or very thin slicing.
+Quick Facts & Cooking Methods:
+Rump Roast
+Quick Facts: A lean, flavorful roast from the upper part of the round. Best cooked slowly to achieve tenderness.
+Best Ways to Cook:
+Pot Roasting (Braising):
+Preparation: Pat roast dry. Season.
+Heating: Heat Dutch oven or heavy pot over medium-high heat with oil.
+Cooking: Sear roast on all sides. Add liquid (broth, water), vegetables, aromatics. Cover and simmer gently in a 300-325°F (150-160°C) oven or on stovetop for 2.5-3.5 hours, or until fork-tender.
+Roasting (for slicing):
+Preparation: Bring roast to room temperature. Pat dry. Season.
+Heating: Preheat oven to 325-350°F (160-175°C).
+Cooking: Roast for 18-25 minutes per pound, or until desired internal temperature is reached.
+Tips for Success: For roasting, slice extremely thin against the grain after resting to maximize tenderness. For braising, ensure ample cooking time.
+Doneness (Internal Temperature/Tenderness):
+For slicing: 130-145°F (54-63°C), then slice very thinly against the grain.
+For braising/stewing: Fork-tender (typically 190-205°F / 88-96°C).
+Bottom Round Roast
+Quick Facts: A very lean and economical roast. Can be tough if not cooked correctly.
+Best Ways to Cook:
+Pot Roasting (Braising):
+Preparation: Pat roast dry. Season.
+Heating: Heat Dutch oven or heavy pot over medium-high heat with oil.
+Cooking: Sear roast. Add liquid, vegetables, aromatics. Cover tightly and simmer gently in a 300-325°F (150-160°C) oven or on stovetop for 3-4 hours, or until fork-tender.
+Roasting (for Deli Meat):
+Preparation: Bring roast to room temperature. Pat dry. Season.
+Heating: Preheat oven to 325°F (160°C).
+Cooking: Roast for 15-20 minutes per pound, or until internal temperature reaches rare/medium-rare.
+Tips for Success: Only roast to rare/medium-rare if planning to slice very thin (like deli roast beef). Otherwise, braise until very tender. Slice against the grain.
+Doneness (Internal Temperature/Tenderness):
+For slicing: 120-135°F (49-57°C), then slice very thinly against the grain.
+For braising/stewing: Fork-tender (typically 190-205°F / 88-96°C).
+London Broil
+Quick Facts: This is a method of preparation rather than a specific cut, though it often refers to top round or flank steak. It involves marinating, broiling or grilling quickly, and then slicing thinly against the grain.
+Best Ways to Cook:
+Broiling:
+Preparation: Marinate for at least 2 hours. Pat dry before broiling.
+Heating: Preheat broiler on high, positioning oven rack 4-6 inches from heating element.
+Cooking: Broil 5-8 minutes per side, depending on thickness and desired doneness.
+Grilling:
+Preparation: Same as broiling.
+Heating: Preheat grill to high heat.
+Cooking: Grill 5-8 minutes per side.
+Tips for Success: Marinade is crucial for flavor and tenderness. Always slice thinly against the grain. Do not overcook! Rest for 5-10 minutes.
+Doneness (Internal Temperature):
+Medium-Rare: 130-135°F (54-57°C)
+Medium: 140-145°F (60-63°C)
+
+Stew Meat
+Quick Facts: Generally refers to various lean, tougher cuts (often from the round or chuck) cut into cubes. Excellent for absorbing flavors during long, slow cooking.
+Best Ways to Cook:
+Stewing:
+Preparation: Pat meat dry. Season generously.
+Heating: Heat a heavy pot or Dutch oven over medium-high heat with oil.
+Cooking: Brown meat in batches. Remove. Add aromatics (onions, garlic) and sauté. Deglaze with liquid (broth, wine). Return meat, add more liquid and vegetables. Bring to a simmer, then cover and cook gently for 2-3+ hours, or until fork-tender.
+Tips for Success: Brown the meat first for deeper flavor. Ensure enough liquid for simmering. Cook low and slow until truly tender.
+Doneness (Tenderness): Fork-tender; easily pierced and broken apart with a fork (typically 190-205°F / 88-96°C).`;
+
+      var varietyText = `VARIETY MEAT
+These are often called offal or organ meats, known for their distinct flavors and nutrient density.
+Quick Facts & Cooking Methods:
+Tongue
+Quick Facts: A muscular organ that is very flavorful and surprisingly tender when cooked properly. High in fat and nutrients.
+Best Ways to Cook:
+Braising/Boiling:
+Preparation: Rinse tongue thoroughly. Place in a large pot.
+Heating: Cover tongue with cold water. Add aromatics (onion, garlic, bay leaf, peppercorns). Bring to a rolling boil, then reduce to a gentle simmer.
+Cooking: Simmer for 2-4 hours, or until very tender when pierced with a fork. Remove, cool slightly, then peel off the outer skin. Slice or shred.
+Tips for Success: Requires long, slow cooking. Skinning after cooking is easier when still warm. Excellent for tacos or sandwiches.
+Doneness (Tenderness): Very tender; easily pierced and shredded with a fork (typically 190-205°F / 88-96°C).
+Heart, Liver, and Kidneys
+Quick Facts: Highly nutritious and flavorful, but with distinct textures and tastes.
+Heart: Lean and muscular, with a deep beefy flavor.
+Liver: Rich, iron-rich, and often pan-fried.
+Kidneys: Strong flavor, often used in stews or pies.
+Best Ways to Cook:
+Heart (Pan-Seared/Grilled):
+Preparation: Trim any tough membranes. Slice into 1/4 to 1/2-inch thick pieces. Pat dry. Season.
+Heating: Heat a skillet or grill to high heat with oil.
+Cooking: Cook quickly, 2-3 minutes per side for medium-rare to medium.
+Liver (Pan-Fried):
+Preparation: Slice thinly. May soak in milk for 30 minutes to reduce strong flavor. Pat very dry. Dredge in flour.
+Heating: Heat skillet over medium-high heat with butter or oil.
+Cooking: Cook quickly, 1-2 minutes per side until lightly browned and just cooked through. Do not overcook.
+Kidneys (Stewed):
+Preparation: Trim fat and membranes. May soak in cold salted water or buttermilk for 30-60 minutes, then rinse.
+Heating: Sear briefly if desired.
+Cooking: Add to stews or pies, simmering gently for 1-2 hours until tender.
+Tips for Success: These cuts are best when fresh. Liver should not be overcooked to avoid a rubbery texture. Kidneys often benefit from pre-soaking to temper their strong flavor.
+Doneness (Internal Temperature/Tenderness):
+Heart: 140-160°F (60-71°C) for medium-rare to medium.
+Liver: 160-170°F (71-77°C) for medium; should be slightly pink inside. Do not overcook!
+Kidneys: Cook until tender, usually 185-200°F (85-93°C) when stewed.
+Meaty Neck Bones
+Quick Facts: Full of flavor and collagen. Ideal for making rich broths, stocks, or long-simmered dishes where the meat falls off the bone.
+Best Ways to Cook:
+Stock/Broth:
+Preparation: Rinse bones. For deeper flavor, roast in a 400°F (200°C) oven for 30-40 minutes until browned.
+Heating: Place bones in a large stockpot. Cover with cold water. Bring to a gentle simmer.
+Cooking: Simmer for 4-8+ hours, skimming foam. Add aromatics during the last few hours.
+Slow Cooker/Braising:
+Preparation: Season bones. Sear briefly if desired.
+Heating: Set slow cooker to low, or preheat oven to 300°F (150°C).
+Cooking: Place bones, liquid, and aromatics in cooker/pot. Cook for 3-5 hours, or until meat is fall-off-the-bone tender.
+Tips for Success: Roast bones first for deeper color and flavor in stock. Cook until meat is easily separated.
+Doneness (Tenderness): Meat is fall-off-the-bone tender.
+Ox Tail
+Quick Facts: Beef tail, cut into sections. Rich in gelatin and flavor, becoming incredibly tender and unctuous when slow-cooked. Ideal for stews and soups.
+Best Ways to Cook:
+Braising/Stewing:
+Preparation: Trim any large pieces of excess fat. Pat dry. Season generously.
+Heating: Heat a large Dutch oven or heavy pot over medium-high heat with oil.
+Cooking: Brown oxtail pieces on all sides until deeply caramelized. Remove. Sauté aromatics (onions, garlic). Deglaze with red wine, add beef broth, tomatoes, and herbs. Return oxtail. Cover tightly and simmer gently in a 325°F (160°C) oven or on stovetop for 2.5-4 hours, or until the meat is falling off the bone.
+Tips for Success: The high collagen content breaks down to create a thick, luxurious sauce. Browning well before braising adds immense flavor.
+Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typically 190-205°F / 88-96°C).`;
+
+      var cutData = {
+        "chuck": {
+          name: "Chuck",
+          subtitle: "The Shoulder",
+          intro: "Use this section for the complete Chuck guide content.",
+          body: chuckText
+        },
+        "ribs": {
+          name: "Ribs",
+          subtitle: "The Back",
+          intro: "Use this section for the complete Ribs guide content.",
+          body: ribsText
+        },
+        "short-loin": {
+          name: "Short Loin",
+          subtitle: "Most Tender",
+          intro: "Use this section for the complete Short Loin guide content.",
+          body: shortLoinText
+        },
+        "sirloin": {
+          name: "Sirloin",
+          subtitle: "Lean & Versatile",
+          intro: "Use this section for the complete Sirloin guide content.",
+          body: sirloinText
+        },
+        "tenderloin": {
+          name: "Tenderloin",
+          subtitle: "The Most Tender Cut",
+          intro: "Use this section for the complete Tenderloin guide content.",
+          body: tenderloinText
+        },
+        "brisket": {
+          name: "Brisket",
+          subtitle: "Low & Slow",
+          intro: "Use this section for the complete Brisket guide content.",
+          body: brisketText
+        },
+        "shank": {
+          name: "Shank",
+          subtitle: "Leg Cuts",
+          intro: "Use this section for the complete Shank guide content.",
+          body: shankText
+        },
+        "flank": {
+          name: "Flank & Plate",
+          subtitle: "Belly Cuts",
+          intro: "Use this section for the complete Flank & Plate guide content.",
+          body: flankPlateText
+        },
+        "plate": {
+          name: "Flank & Plate",
+          subtitle: "Belly Cuts",
+          intro: "Use this section for the complete Flank & Plate guide content.",
+          body: flankPlateText
+        },
+        "round": {
+          name: "Round",
+          subtitle: "Hind Leg",
+          intro: "Use this section for the complete Round guide content.",
+          body: roundText
+        },
+        "tongue": {
+          name: "Variety Meat",
+          subtitle: "Tongue & More",
+          intro: "Use this section for the complete Variety Meat guide content.",
+          body: varietyText
+        },
+        "cheek": {
+          name: "Variety Meat",
+          subtitle: "Heart, Liver, and Kidneys",
+          intro: "Use this section for the complete Variety Meat guide content.",
+          body: varietyText
+        },
+        "neck": {
+          name: "Variety Meat",
+          subtitle: "Meaty Neck Bones",
+          intro: "Use this section for the complete Variety Meat guide content.",
+          body: varietyText
+        },
+        "ox-tail": {
+          name: "Variety Meat",
+          subtitle: "Ox Tail",
+          intro: "Use this section for the complete Variety Meat guide content.",
+          body: varietyText
+        }
+      };
+
+      var regions = document.querySelectorAll(".cow-region");
+      var infoDefault = document.getElementById("primo-info-default");
+      var infoDisplay = document.getElementById("primo-info-display");
+      var infoPanel = document.getElementById("primo-info-panel");
+
+      function renderCut(cutKey) {
+        var data = cutData[cutKey];
+        if (!data) return;
+
+        infoDefault.style.display = "none";
+        infoDisplay.style.display = "block";
+        infoDisplay.innerHTML = "";
+
+        var wrapper = document.createElement("div");
+        wrapper.className = "primo-info-content";
+
+        var eyebrow = document.createElement("div");
+        eyebrow.className = "pi-eyebrow";
+        eyebrow.textContent = data.subtitle;
+        wrapper.appendChild(eyebrow);
+
+        var title = document.createElement("h3");
+        title.className = "pi-title";
+        title.textContent = data.name;
+        wrapper.appendChild(title);
+
+        var intro = document.createElement("p");
+        intro.className = "pi-primal-intro";
+        intro.textContent = data.intro;
+        wrapper.appendChild(intro);
+
+        var divider = document.createElement("hr");
+        divider.className = "pi-divider";
+        wrapper.appendChild(divider);
+
+        var pre = document.createElement("pre");
+        pre.className = "pi-raw-content";
+        pre.textContent = data.body;
+        wrapper.appendChild(pre);
+
+        infoDisplay.appendChild(wrapper);
+
+        if (infoPanel.scrollTo) {
+          infoPanel.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      regions.forEach(function(region) {
+        region.addEventListener("click", function() {
+          var cutKey = this.getAttribute("data-cut");
+
+          document.querySelectorAll(".cow-region.active").forEach(function(el) {
+            el.classList.remove("active");
+          });
+
+          document.querySelectorAll('.cow-region[data-cut="' + cutKey + '"]').forEach(function(el) {
+            el.classList.add("active");
+          });
+
+          renderCut(cutKey);
+
+          if (window.innerWidth < 900) {
+            infoPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      if (typeof IntersectionObserver !== "undefined") {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+        document.querySelectorAll(".primo-reveal").forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".primo-reveal").forEach(function(el) {
+          el.classList.add("visible");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
