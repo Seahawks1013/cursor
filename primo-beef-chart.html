@@ -90,9 +90,17 @@
     }
 
     .cow-base {
-      fill: #f6f6f6;
-      stroke: #222;
-      stroke-width: 1.25;
+      fill: #000;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+
+    .cow-label {
+      fill: #fff;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      pointer-events: none;
     }
 
     .cow-region {
@@ -148,17 +156,90 @@
       margin: 20px 0;
     }
 
-    .pi-raw-content {
+    .pi-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pi-section-main {
       margin: 0;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 13px;
-      line-height: 1.62;
-      color: #222;
-      background: #fafafa;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #3f5951;
+      font-weight: 700;
+    }
+
+    .pi-section-pill {
+      margin: 2px 0 10px;
+      display: inline-block;
+      width: fit-content;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #3f5951;
+      border: 1px solid #3f5951;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-weight: 700;
+    }
+
+    .pi-cut-title {
+      margin: 10px 0 2px;
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #111;
       border-left: 3px solid #3f5951;
-      padding: 12px 14px;
+      background: #f7f7f7;
+      padding: 7px 10px;
+    }
+
+    .pi-info-label {
+      margin: 8px 0 2px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3f5951;
+      font-weight: 700;
+    }
+
+    .pi-method-title {
+      margin: 8px 0 0;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .pi-body-line,
+    .pi-detail-line,
+    .pi-temp-line {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #2a2a2a;
+      background: #fbfbfb;
+      padding: 6px 10px;
+      border-left: 2px solid #e3e3e3;
+    }
+
+    .pi-detail-line {
+      border-left-color: #3f5951;
+    }
+
+    .pi-detail-line strong,
+    .pi-temp-line strong {
+      color: #111;
+    }
+
+    .pi-temp-line {
+      border-left-color: #8da39b;
+      background: #f2f6f5;
     }
   </style>
 </head>
@@ -206,6 +287,27 @@
               <polygon points="325,460 382,460 382,620 325,620" />
               <polygon points="670,455 740,455 740,625 670,625" />
               <polygon points="790,455 860,455 860,625 790,625" />
+            </g>
+
+            <g aria-hidden="true">
+              <text class="cow-label" x="68" y="176" font-size="16">TONGUE</text>
+              <text class="cow-label" x="102" y="136" font-size="16">CHEEK</text>
+              <text class="cow-label" x="255" y="175" font-size="56" transform="rotate(-56 255 175)">NECK</text>
+              <text class="cow-label" x="312" y="265" font-size="70" transform="rotate(-58 312 265)">CHUCK</text>
+              <text class="cow-label" x="470" y="250" font-size="66">RIBS</text>
+              <text class="cow-label" x="590" y="180" font-size="46">SHORT</text>
+              <text class="cow-label" x="585" y="250" font-size="60">LOIN</text>
+              <text class="cow-label" x="665" y="100" font-size="30">SIRLOIN</text>
+              <text class="cow-label" x="644" y="166" font-size="30">TENDERLOIN</text>
+              <text class="cow-label" x="760" y="300" font-size="76" transform="rotate(90 760 300)">ROUND</text>
+              <text class="cow-label" x="818" y="108" font-size="28" transform="rotate(68 818 108)">OX TAIL</text>
+              <text class="cow-label" x="320" y="430" font-size="56">BRISKET</text>
+              <text class="cow-label" x="470" y="430" font-size="60">PLATE</text>
+              <text class="cow-label" x="585" y="430" font-size="62">FLANK</text>
+              <text class="cow-label" x="300" y="585" font-size="34" transform="rotate(-90 300 585)">SHANK</text>
+              <text class="cow-label" x="367" y="585" font-size="34" transform="rotate(-90 367 585)">SHANK</text>
+              <text class="cow-label" x="715" y="585" font-size="34" transform="rotate(-75 715 585)">SHANK</text>
+              <text class="cow-label" x="835" y="585" font-size="34" transform="rotate(-75 835 585)">SHANK</text>
             </g>
 
             <polygon class="cow-region" data-cut="tongue" points="15,155 82,155 82,195 15,195" />
@@ -731,85 +833,85 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
         "chuck": {
           name: "Chuck",
           subtitle: "The Shoulder",
-          intro: "Use this section for the complete Chuck guide content.",
+          intro: "The chuck primal is located at the shoulder of the steer. It's a hardworking muscle group, meaning cuts from this area are typically very flavorful but can be tougher.",
           body: chuckText
         },
         "ribs": {
           name: "Ribs",
           subtitle: "The Back",
-          intro: "Use this section for the complete Ribs guide content.",
+          intro: "Located along the back of the steer, the ribs primal is known for producing incredibly flavorful and often tender cuts.",
           body: ribsText
         },
         "short-loin": {
           name: "Short Loin",
           subtitle: "Most Tender",
-          intro: "Use this section for the complete Short Loin guide content.",
+          intro: "This primal is located behind the ribs and yields some of the most tender and desirable steaks due to minimal muscle use.",
           body: shortLoinText
         },
         "sirloin": {
           name: "Sirloin",
           subtitle: "Lean & Versatile",
-          intro: "Use this section for the complete Sirloin guide content.",
+          intro: "The sirloin is located near the rear of the steer, between the loin and the round.",
           body: sirloinText
         },
         "tenderloin": {
           name: "Tenderloin",
           subtitle: "The Most Tender Cut",
-          intro: "Use this section for the complete Tenderloin guide content.",
+          intro: "The most tender cut of beef, located along the spine, a non-weight-bearing muscle.",
           body: tenderloinText
         },
         "brisket": {
           name: "Brisket",
           subtitle: "Low & Slow",
-          intro: "Use this section for the complete Brisket guide content.",
+          intro: "These primals are from the lower chest and leg areas, respectively. They are hardworking muscles, rich in connective tissue.",
           body: brisketText
         },
         "shank": {
           name: "Shank",
           subtitle: "Leg Cuts",
-          intro: "Use this section for the complete Shank guide content.",
+          intro: "These primals are from the lower chest and leg areas, respectively. They are hardworking muscles, rich in connective tissue.",
           body: shankText
         },
         "flank": {
           name: "Flank & Plate",
           subtitle: "Belly Cuts",
-          intro: "Use this section for the complete Flank & Plate guide content.",
+          intro: "These areas are from the belly section of the steer. Cuts are typically lean and flavorful with a distinct grain.",
           body: flankPlateText
         },
         "plate": {
           name: "Flank & Plate",
           subtitle: "Belly Cuts",
-          intro: "Use this section for the complete Flank & Plate guide content.",
+          intro: "These areas are from the belly section of the steer. Cuts are typically lean and flavorful with a distinct grain.",
           body: flankPlateText
         },
         "round": {
           name: "Round",
           subtitle: "Hind Leg",
-          intro: "Use this section for the complete Round guide content.",
+          intro: "The round primal is located at the steer's hind leg. These muscles are very lean and hardworking.",
           body: roundText
         },
         "tongue": {
           name: "Variety Meat",
           subtitle: "Tongue & More",
-          intro: "Use this section for the complete Variety Meat guide content.",
+          intro: "These are often called offal or organ meats, known for their distinct flavors and nutrient density.",
           body: varietyText
         },
         "cheek": {
           name: "Variety Meat",
           subtitle: "Heart, Liver, and Kidneys",
-          intro: "Use this section for the complete Variety Meat guide content.",
+          intro: "These are often called offal or organ meats, known for their distinct flavors and nutrient density.",
           body: varietyText
         },
         "neck": {
           name: "Variety Meat",
           subtitle: "Meaty Neck Bones",
-          intro: "Use this section for the complete Variety Meat guide content.",
+          intro: "These are often called offal or organ meats, known for their distinct flavors and nutrient density.",
           body: varietyText
         },
         "ox-tail": {
           name: "Variety Meat",
           subtitle: "Ox Tail",
-          intro: "Use this section for the complete Variety Meat guide content.",
+          intro: "These are often called offal or organ meats, known for their distinct flavors and nutrient density.",
           body: varietyText
         }
       };
@@ -818,6 +920,96 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
       var infoDefault = document.getElementById("primo-info-default");
       var infoDisplay = document.getElementById("primo-info-display");
       var infoPanel = document.getElementById("primo-info-panel");
+
+      function appendLabelLine(parent, className, line) {
+        var p = document.createElement("p");
+        p.className = className;
+        var splitAt = line.indexOf(":");
+        if (splitAt > -1) {
+          var strong = document.createElement("strong");
+          strong.textContent = line.slice(0, splitAt + 1);
+          p.appendChild(strong);
+          var rest = line.slice(splitAt + 1).trim();
+          if (rest.length) {
+            p.appendChild(document.createTextNode(" " + rest));
+          }
+        } else {
+          p.textContent = line;
+        }
+        parent.appendChild(p);
+      }
+
+      function buildFormattedBody(body) {
+        var block = document.createElement("div");
+        block.className = "pi-text-block";
+        var lines = body.split("\n").map(function(line) {
+          return line.trim();
+        }).filter(function(line) {
+          return line.length > 0;
+        });
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          var next = lines[i + 1] || "";
+
+          if ((i === 0 && /^[A-Z][A-Z &()\-]+$/.test(line)) || /^[A-Z][A-Z &()\-]+$/.test(line) && line.length < 36) {
+            var sectionMain = document.createElement("p");
+            sectionMain.className = "pi-section-main";
+            sectionMain.textContent = line;
+            block.appendChild(sectionMain);
+            continue;
+          }
+
+          if (line === "Quick Facts & Cooking Methods:") {
+            var pill = document.createElement("p");
+            pill.className = "pi-section-pill";
+            pill.textContent = line;
+            block.appendChild(pill);
+            continue;
+          }
+
+          if (/^[A-Z][A-Za-z0-9'&()\/.\- ]+$/.test(line) && next.indexOf("Quick Facts:") === 0) {
+            var cutTitle = document.createElement("h4");
+            cutTitle.className = "pi-cut-title";
+            cutTitle.textContent = line;
+            block.appendChild(cutTitle);
+            continue;
+          }
+
+          if (line === "Best Ways to Cook:") {
+            var infoLabel = document.createElement("p");
+            infoLabel.className = "pi-info-label";
+            infoLabel.textContent = line;
+            block.appendChild(infoLabel);
+            continue;
+          }
+
+          if (/^(Quick Facts:|Tips for Success:|Doneness|Preparation:|Heating:|Cooking:|For slicing:|For braising\/stewing:|Heart:|Liver:|Kidneys:|Well-Done)/.test(line)) {
+            appendLabelLine(block, "pi-detail-line", line);
+            continue;
+          }
+
+          if (/^(Rare:|Medium-Rare:|Medium:)/.test(line)) {
+            appendLabelLine(block, "pi-temp-line", line);
+            continue;
+          }
+
+          if (/^[A-Za-z0-9 '&()\/\-.]+:$/.test(line)) {
+            var methodTitle = document.createElement("p");
+            methodTitle.className = "pi-method-title";
+            methodTitle.textContent = line;
+            block.appendChild(methodTitle);
+            continue;
+          }
+
+          var bodyLine = document.createElement("p");
+          bodyLine.className = "pi-body-line";
+          bodyLine.textContent = line;
+          block.appendChild(bodyLine);
+        }
+
+        return block;
+      }
 
       function renderCut(cutKey) {
         var data = cutData[cutKey];
@@ -849,10 +1041,7 @@ Doneness (Tenderness): Meat is falling off the bone and incredibly tender (typic
         divider.className = "pi-divider";
         wrapper.appendChild(divider);
 
-        var pre = document.createElement("pre");
-        pre.className = "pi-raw-content";
-        pre.textContent = data.body;
-        wrapper.appendChild(pre);
+        wrapper.appendChild(buildFormattedBody(data.body));
 
         infoDisplay.appendChild(wrapper);
 
